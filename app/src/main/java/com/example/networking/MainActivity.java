@@ -2,8 +2,11 @@ package com.example.networking;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -13,12 +16,16 @@ import java.lang.reflect.Type;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 @SuppressWarnings("FieldCanBeLocal")
 public class MainActivity extends AppCompatActivity implements JsonTask.JsonTaskListener {
 
     private final String JSON_URL = "HTTPS_URL_TO_JSON_DATA_CHANGE_THIS_URL";
     private final String JSON_FILE = "mountains.json";
+    private ArrayList<Mountain> mountains;
+    private RecyclerView recyclerView;
+    private RecyclerView.Adapter recyclerViewAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +42,24 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
 
         // TypeToken to specify to gson to convert to an *arraylist of Mountain objects*
         Type mountainListType = new TypeToken<ArrayList<Mountain>>(){}.getType();
-        ArrayList<Mountain> mountains = gson.fromJson(json, mountainListType);
+        mountains = gson.fromJson(json, mountainListType);
+        recyclerViewAdapter = new RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+            @NonNull
+            @Override
+            public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                return null;
+            }
+
+            @Override
+            public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+
+            }
+
+            @Override
+            public int getItemCount() {
+                return 0;
+            }
+        };
     }
 
     @Override
