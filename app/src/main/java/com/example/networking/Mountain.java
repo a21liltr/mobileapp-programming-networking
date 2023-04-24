@@ -39,6 +39,45 @@ public class Mountain {
         return name;
     }
 
+    public void setID(String ID) {
+        this.ID = ID;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public void setCompany(String company) {
+        this.company = company;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
+    }
+
+    public void setCost(int cost) {
+        this.cost = cost;
+    }
+
+    public void setAuxdata(Auxdata auxdata) {
+        this.auxdata = auxdata;
+    }
+
+    public String getID() {
+        return ID;
+    }
 
     public String getName() {
         return name;
@@ -50,18 +89,6 @@ public class Mountain {
 
     public int getSize() {
         return size;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public void setSize(int size) {
-        this.size = size;
     }
 }
 
