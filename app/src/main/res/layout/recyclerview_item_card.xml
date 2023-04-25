@@ -31,7 +31,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/baseline_landscape_24" />
+                app:srcCompat="@drawable/baseline_landscape_24"
+                tools:ignore="ContentDescription" />
 
             <ImageView
                 android:id="@+id/img_location"
@@ -42,7 +43,8 @@
                 app:layout_constraintHorizontal_bias="0.72"
                 app:layout_constraintStart_toStartOf="@+id/img_mountain"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/baseline_location_on_24" />
+                app:srcCompat="@drawable/baseline_location_on_24"
+                tools:ignore="ImageContrastCheck" />
 
             <ImageView
                 android:id="@+id/img_size"

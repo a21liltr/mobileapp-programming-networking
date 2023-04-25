@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
 public class MainActivity extends AppCompatActivity implements JsonTask.JsonTaskListener {
 
     private final String JSON_URL = "https://mobprog.webug.se/json-api?login=brom";
-    private final String JSON_FILE = "mountains.json";
+    private final String JSON_FILE = "mountains.json"; // Not used.
     private ArrayList<Mountain> mountains;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter recyclerViewAdapter;
@@ -33,9 +33,6 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         setContentView(R.layout.activity_main);
 
         new JsonTask(this).execute(JSON_URL);
-
-        // converts json contents to string
-        String json = readFile("mountains.json");
 
         recyclerViewAdapter = new RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             @NonNull
@@ -69,17 +66,6 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
 
         for (Mountain m : mountains) {
             Log.d("a21liltr", m.toString());
-        }
-    }
-    @SuppressWarnings("SameParameterValue")
-    private String readFile(String fileName) {
-        try {
-            //noinspection CharsetObjectCanBeUsed
-            return new Scanner(getApplicationContext().getAssets().open(fileName), Charset.forName("UTF-8").name()).useDelimiter("\\A").next();
-        } catch (IOException e) {
-            String TAG = "a21liltr";
-            Log.e(TAG, "Could not read file: " + fileName);
-            return null;
         }
     }
 }

@@ -3,7 +3,6 @@ package com.example.networking;
 import com.google.gson.annotations.SerializedName;
 
 public class Mountain {
-    private String ID;
     private String name;
     private String location;
 
@@ -39,10 +38,6 @@ public class Mountain {
         return name;
     }
 
-    public void setID(String ID) {
-        this.ID = ID;
-    }
-
     public void setName(String name) {
         this.name = name;
     }
@@ -53,10 +48,6 @@ public class Mountain {
 
     public void setHeight(int height) {
         this.height = height;
-    }
-
-    public String getID() {
-        return ID;
     }
 
     public String getName() {
