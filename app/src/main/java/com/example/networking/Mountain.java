@@ -19,8 +19,8 @@ public class Mountain {
 
 
     public Mountain() {
-        name = "SAKNAS";
-        location = "SAKNAS";
+        name = "MISSING";
+        location = "MISSING";
         size = -1;
     }
 

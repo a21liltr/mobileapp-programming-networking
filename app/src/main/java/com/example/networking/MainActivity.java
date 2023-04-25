@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         // gson used to deserialize json to list of objects
         Gson gson = new Gson();
 
-        // TypeToken to specify to gson to convert to an *arraylist of Mountain objects*
+        // TypeToken to tell gson to convert to specifically an *arraylist of Mountain objects*
         Type mountainListType = new TypeToken<ArrayList<Mountain>>(){}.getType();
         mountains = gson.fromJson(json, mountainListType);
         recyclerViewAdapter = new RecyclerView.Adapter<RecyclerView.ViewHolder>() {
