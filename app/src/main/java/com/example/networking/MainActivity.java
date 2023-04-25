@@ -32,17 +32,11 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        new JsonFile(this, this).execute(JSON_FILE);
+        new JsonTask(this).execute(JSON_URL);
 
         // converts json contents to string
         String json = readFile("mountains.json");
 
-        // gson used to deserialize json to list of objects
-        Gson gson = new Gson();
-
-        // TypeToken to tell gson to convert to specifically an *arraylist of Mountain objects*
-        Type mountainListType = new TypeToken<ArrayList<Mountain>>(){}.getType();
-        mountains = gson.fromJson(json, mountainListType);
         recyclerViewAdapter = new RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             @NonNull
             @Override
@@ -65,6 +59,17 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
     @Override
     public void onPostExecute(String json) {
         Log.d("MainActivity", json);
+
+        // gson used to deserialize json to list of objects
+        Gson gson = new Gson();
+
+        // TypeToken to tell gson to convert to specifically an *arraylist of Mountain objects*
+        Type mountainListType = new TypeToken<ArrayList<Mountain>>(){}.getType();
+        mountains = gson.fromJson(json, mountainListType);
+
+        for (Mountain m : mountains) {
+            Log.d("a21liltr", m.toString());
+        }
     }
     @SuppressWarnings("SameParameterValue")
     private String readFile(String fileName) {
