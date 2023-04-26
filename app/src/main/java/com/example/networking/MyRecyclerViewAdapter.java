@@ -18,12 +18,10 @@ import java.util.List;
 public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAdapter.MyViewHolder> {
     private ArrayList<Mountain> mountains;
     private LayoutInflater layoutInflater;
-    private View.OnClickListener onClickListener;
 
-    public MyRecyclerViewAdapter(Context c, ArrayList<Mountain> m, View.OnClickListener l) {
+    public MyRecyclerViewAdapter(Context c, ArrayList<Mountain> m) {
         this.layoutInflater = LayoutInflater.from(c);
         this.mountains = m;
-        this.onClickListener = l;
     }
     @NonNull
     @Override
@@ -39,7 +37,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
         // based on the position of the recycler view
         holder.tvName.setText(mountains.get(position).getName());
         holder.tvLocation.setText(mountains.get(position).getLocation());
-        holder.tvHeight.setText(mountains.get(position).getHeight());
+        holder.tvHeight.setText(String.valueOf(mountains.get(position).getHeight()));
     }
 
     @Override
@@ -50,16 +48,10 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         // Assign variables to the views from the recycler_view_item layout file
-
-        //ImageView imgMountain, imgLocation, imgHeight;
         TextView tvName, tvLocation, tvHeight;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-
-            //imgMountain = itemView.findViewById(R.id.img_mountain);
-            //imgLocation = itemView.findViewById(R.id.img_location);
-            //imgHeight = itemView.findViewById(R.id.img_height);
 
             tvName = itemView.findViewById(R.id.tv_name);
             tvLocation = itemView.findViewById(R.id.tv_location);
