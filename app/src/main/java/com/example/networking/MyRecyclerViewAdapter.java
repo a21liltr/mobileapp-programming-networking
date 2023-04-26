@@ -37,7 +37,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
         // based on the position of the recycler view
         holder.tvName.setText(mountains.get(position).getName());
         holder.tvLocation.setText(mountains.get(position).getLocation());
-        holder.tvHeight.setText(String.valueOf(mountains.get(position).getHeight()));
+        holder.tvHeight.setText(String.valueOf(mountains.get(position).getHeight()) + " m");
     }
 
     @Override
