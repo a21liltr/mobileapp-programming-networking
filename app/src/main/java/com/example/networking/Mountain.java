@@ -23,31 +23,9 @@ public class Mountain {
         height = -1;
     }
 
-    public String info() {
-        String str = new String();
-        str += name +
-                " is located in " +
-                location +
-                " and has a height of " +
-                height + "m!";
-        return str;
-    }
-
     @Override
-    public String toString() {
+    public String toString() { // Used to return name of the mountain in log.
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public void setHeight(int height) {
-        this.height = height;
     }
 
     public String getName() {
