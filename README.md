@@ -1,42 +1,39 @@
 
 # Rapport
 
-**Skriv din rapport här!**
+**Project to fetch and use data from JSON.**
 
-_Du kan ta bort all text som finns sedan tidigare_.
+For this assignment, JSON data is provided as a local file as well as via a URL.
+The goal is to deserialize the JSON data and display the information in an app with the help of a recycler view.
 
-## Följande grundsyn gäller dugga-svar:
+Looking at the JSON data, it appears that a JSONarray was provided containing a couple of JSONobjects.
+From this, a class Mountain is created with the same properties that are in the JSONobjects,
+with an exception of the field "size" in the JSONobject that is deserialized but is changed to "height" in the Mountian class.
 
-- Ett kortfattat svar är att föredra. Svar som är längre än en sida text (skärmdumpar och programkod exkluderat) är onödigt långt.
-- Svaret skall ha minst en snutt programkod.
-- Svaret skall inkludera en kort övergripande förklarande text som redogör för vad respektive snutt programkod gör eller som svarar på annan teorifråga.
-- Svaret skall ha minst en skärmdump. Skärmdumpar skall illustrera exekvering av relevant programkod. Eventuell text i skärmdumpar måste vara läsbar.
-- I de fall detta efterfrågas, dela upp delar av ditt svar i för- och nackdelar. Dina för- respektive nackdelar skall vara i form av punktlistor med kortare stycken (3-4 meningar).
+Only some data is of interest and wil be used, therefor only some properties are chosen to be deserialized, these are:
+- name
+- location
+- size ("height")
 
-Programkod ska se ut som exemplet nedan. Koden måste vara korrekt indenterad då den blir lättare att läsa vilket gör det lättare att hitta syntaktiska fel.
+To deserialize JSON data, it is first converted to a string. Then, GSON is used to do the actual deserialization of JSON.
+As the contents is that of a JSONarray which is to be deserialized into a list of objects, this needs to happen in two steps, first by using Type and TypeToken.
+
+TypeToken is used to specify to GSON what object to convert the JSON to.
+What is desired is specifically _an array of objects of the class Mountain_ but it is not possible to just type in ArrayList<Mountain>,
+therefor this middle-step is needed to specify it as an arraylist of mountain objects.
 
 ```
-function errorCallback(error) {
-    switch(error.code) {
-        case error.PERMISSION_DENIED:
-            // Geolocation API stöds inte, gör något
-            break;
-        case error.POSITION_UNAVAILABLE:
-            // Misslyckat positionsanrop, gör något
-            break;
-        case error.UNKNOWN_ERROR:
-            // Okänt fel, gör något
-            break;
-    }
-}
+private ArrayList<Mountain> mountains;
+...
+
+@Override
+    public void onPostExecute(String json) {
+    Gson gson = new Gson();
+
+    Type mountainListType = new TypeToken<ArrayList<Mountain>>(){}.getType();
+    mountains = gson.fromJson(json, mountainListType);   
+    ...
 ```
 
-Bilder läggs i samma mapp som markdown-filen.
 
 ![](android.png)
-
-Läs gärna:
-
-- Boulos, M.N.K., Warren, J., Gong, J. & Yue, P. (2010) Web GIS in practice VIII: HTML5 and the canvas element for interactive online mapping. International journal of health geographics 9, 14. Shin, Y. &
-- Wunsche, B.C. (2013) A smartphone-based golf simulation exercise game for supporting arthritis patients. 2013 28th International Conference of Image and Vision Computing New Zealand (IVCNZ), IEEE, pp. 459–464.
-- Wohlin, C., Runeson, P., Höst, M., Ohlsson, M.C., Regnell, B., Wesslén, A. (2012) Experimentation in Software Engineering, Berlin, Heidelberg: Springer Berlin Heidelberg.
