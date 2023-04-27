@@ -10,7 +10,7 @@ Looking at the JSON data, it appears that a JSONarray was provided containing a 
 From this, a class Mountain is created with the same properties that are in the JSONobjects,
 with an exception of the field "size" in the JSONobject that is deserialized but is changed to "height" in the Mountian class.
 
-Only some data is of interest and wil be used, therefor only some properties are chosen to be deserialized, these are:
+Only some data is of interest and will be used, therefor only some properties are chosen to be deserialized, these are:
 - name
 - location
 - size ("height")
