@@ -114,4 +114,4 @@ TextView tvInfo = findViewById(R.id.sa_tv
 tvName.setText(name);
 tvInfo.setText(info);
 ```
-When a used presses anywhere on the second activity, it stops with the method finish() and the user is taken back to MainActivity and the list of mountains.
+When a user presses anywhere on the second activity, it stops with the method finish() and the user is taken back to MainActivity and the list of mountains.
