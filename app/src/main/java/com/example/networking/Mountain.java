@@ -24,8 +24,16 @@ public class Mountain {
     }
 
     @Override
-    public String toString() { // Used to return name of the mountain in log.
+    public String toString() { // Used to return name of the mountain in console.
         return name;
+    }
+
+    public String info() {
+        String s = name
+                + " is located in " + location
+                + " and has a height of " + height + " m above sea level.";
+
+        return s;
     }
 
     public String getName() {

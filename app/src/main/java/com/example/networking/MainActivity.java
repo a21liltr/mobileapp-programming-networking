@@ -1,5 +1,6 @@
 package com.example.networking;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -14,7 +15,7 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 @SuppressWarnings("FieldCanBeLocal")
-public class MainActivity extends AppCompatActivity implements JsonTask.JsonTaskListener {
+public class MainActivity extends AppCompatActivity implements JsonTask.JsonTaskListener, IRecyclerView {
 
     private final String JSON_URL = "https://mobprog.webug.se/json-api?login=brom";
     private final String JSON_FILE = "mountains.json"; // Not used.
@@ -44,10 +45,20 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         }
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
 
-        MyRecyclerViewAdapter adapter = new MyRecyclerViewAdapter(this, mountains);
+        MyRecyclerViewAdapter adapter = new MyRecyclerViewAdapter(this, mountains, this);
 
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+    }
+
+    @Override
+    public void onItemClick(int position) {
+        Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+
+        intent.putExtra("keyName", mountains.get(position).getName());
+        intent.putExtra("keyInfo", mountains.get(position).info());
+
+        startActivity(intent);
     }
 }
 
