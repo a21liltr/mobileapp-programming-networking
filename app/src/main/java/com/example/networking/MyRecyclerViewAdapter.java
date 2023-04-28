@@ -49,7 +49,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
         // Assign variables to the views from the recycler_view_item layout file
         TextView tvName, tvLocation, tvHeight;
 
-        public MyViewHolder(@NonNull View itemView, IRecyclerView iRecyclerView) {
+        public MyViewHolder(@NonNull View itemView, final IRecyclerView iRecyclerView) {
             super(itemView);
 
             tvName = itemView.findViewById(R.id.tv_name);
